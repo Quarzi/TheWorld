@@ -6,7 +6,10 @@
     <meta charset="utf-8" />
     <title>The World - @ViewBag.Title</title>
 
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootswatch/yeti/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -16,18 +19,40 @@
         <span id="username">
             Brucie Willies
         </span>
-        <ul class="menu">
-            <li class="active"><a asp-controller="App" asp-action="Index">Home</a></li>
-            <li><a asp-controller="App" asp-action="About">About</a></li>
-            <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
+        <hr />
+        <ul class="nav">
+            <li class="active"><a asp-controller="App" asp-action="Index" class="text-center">Home</a></li>
+            <li><a asp-controller="App" asp-action="About" class="text-center">About</a></li>
+            <li><a asp-controller="App" asp-action="Contact" class="text-center">Contact</a></li>
         </ul>
     </div>
 
     <div id="wrapper">
-        <div id="main">
-            <div>
-                <button id="sidebarToggle">Toggle</button>
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <button id="sidebarToggle" class="btn btn-primary">
+                            <i class="fa fa-angle-left"></i>
+                        </button>
+                    </li>
+                </ul>
+                <a asp-controller="App" asp-action="Index" class="navbar-brand">The World</a>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" class="btn btn-sm btn-info">
+                            <i class="fa fa-save"></i> Save
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-sm btn-info">
+                            <i class="fa fa-print"></i> Print
+                        </a>
+                    </li>
+                </ul>
             </div>
+        </nav>
+        <div id="main" class="container-fluid">
 
             <div>
                 @RenderBody()
@@ -35,19 +60,22 @@
 
         </div>
 
-        <div id="footer">
-            &copy; 2015 The World Ltd.
+        <div id="footer" class="container-fluid">
+            <div class="navbar navbar-inverse navbar-fixed-bottom">
+                <h4 class="text-center text-info">&copy; 2015 The World Ltd.</h4>
+            </div>
         </div>
 
-        <!-- JavaScript libs -->
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-
-        <!-- Side specific JaveScript -->
-        <script src="~/js/side.js"></script>
-
-        @RenderSection("Scripts", false)
-
     </div>
+
+    <!-- JavaScript libs -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Side specific JaveScript -->
+    <script src="~/js/side.js"></script>
+
+    @RenderSection("Scripts", false)
 
 </body>
 
