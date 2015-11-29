@@ -10,6 +10,5 @@ namespace TheWorld.Models
         public double Latitude { get; set; }
         public DateTime Arrival { get; set; }
         public int Order { get; set; }
-
     }
 }
