@@ -10,14 +10,19 @@
     "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final",
     "Microsoft.AspNet.StaticFiles": "1.0.0-rc1-final",
     "Microsoft.AspNet.Mvc.TagHelpers": "6.0.0-rc1-final",
+    "Microsoft.AspNet.Tooling.Razor": "1.0.0-rc1-final",
     "Microsoft.Extensions.Configuration": "1.0.0-rc1-final",
     "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc1-final",
+    "Microsoft.Extensions.Caching.Memory": "1.0.0-rc1-final",
+    "Microsoft.Extensions.FileSystemGlobbing": "1.0.0-rc1-final",
     "EntityFramework.Core": "7.0.0-rc1-final",
     "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
     "EntityFramework.Commands": "7.0.0-rc1-final",
     "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
     "Newtonsoft.Json": "6.0.6",
-    "AutoMapper": "4.0.4" 
+    "AutoMapper": "4.0.4",
+    "System.Security.Cryptography.Algorithms": "4.0.0-beta-23516",
+    "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-rc1-final"
   },
 
   "commands": {

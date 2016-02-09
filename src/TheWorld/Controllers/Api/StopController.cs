@@ -9,9 +9,11 @@ using System.Net;
 using AutoMapper;
 using TheWorld.ViewModels;
 using TheWorld.Services;
+using Microsoft.AspNet.Authorization;
 
 namespace TheWorld.Controllers.Api
 {
+    [Authorize]
     [Route("api/trips/{tripName}/stops")]
     public class StopController : Controller
     {
@@ -33,7 +35,7 @@ namespace TheWorld.Controllers.Api
         {
             try
             {
-                var results = _worldRepository.GetTripByName(tripName);
+                var results = _worldRepository.GetTripByName(tripName, User.Identity.Name);
 
                 if (results == null)
                 {
@@ -72,7 +74,7 @@ namespace TheWorld.Controllers.Api
                     newStop.Longitude = coordResult.Longitude;
 
                     // Save to db
-                    _worldRepository.AddStop(tripName, newStop);
+                    _worldRepository.AddStop(tripName, newStop, User.Identity.Name);
 
                     if (_worldRepository.SaveAll())
                     {

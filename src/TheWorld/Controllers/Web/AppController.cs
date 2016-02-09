@@ -3,6 +3,7 @@ using TheWorld.Models;
 using TheWorld.Services;
 using TheWorld.ViewModels;
 using System.Linq;
+using Microsoft.AspNet.Authorization;
 
 namespace TheWorld.Controllers.Web
 {
@@ -17,18 +18,29 @@ namespace TheWorld.Controllers.Web
             _worldRepository = worldRepository;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            var trips = _worldRepository.GetAllTrips();
-            ViewBag.trips = trips;
             return View();
         }
 
+        [HttpGet]
+        public IActionResult Trips()
+        {
+            var trips = _worldRepository.GetAllTrips();
+
+            
+
+            return View(trips);
+        }
+
+        [HttpGet]
         public IActionResult About()
         {
             return View();
         }
 
+        [Authorize, HttpGet]
         public IActionResult Contact()
         {
             return View();

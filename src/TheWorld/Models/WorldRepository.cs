@@ -18,11 +18,11 @@ namespace TheWorld.Models
             _logger = logger;
         }
 
-        public void AddStop(string tripName, Stop newStop)
+        public void AddStop(string tripName, Stop newStop, string userName)
         {
             try
             {
-                var theTrip = GetTripByName(tripName);
+                var theTrip = GetTripByName(tripName, userName);
                 newStop.Order = theTrip.Stops.Max(s => s.Order) + 1;
                 _worldContext.Stops.Add(newStop);
             }
@@ -73,18 +73,35 @@ namespace TheWorld.Models
             }
         }
 
-        public Trip GetTripByName(string tripName)
+        public Trip GetTripByName(string tripName, string userName)
         {
             try
             {
                 return _worldContext.Trips
                         .Include(t => t.Stops)
-                        .Where(t => t.Name == tripName)
+                        .Where(t => t.Name == tripName && t.UserName == userName)
                         .FirstOrDefault();
             }
             catch (Exception ex)
             {
                 _logger.LogError("Could not get trip with stops by name from database", ex);
+                return null;
+            }
+        }
+
+        public IEnumerable<Trip> GetUserTripsWithStops(string userName)
+        {
+            try
+            {
+                return _worldContext.Trips 
+                .Include(t => t.Stops)
+                .OrderBy(t => t.Name)
+                .Where(t => t.UserName == userName)
+                .ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Could not get trips for user with stops from database", ex);
                 return null;
             }
         }

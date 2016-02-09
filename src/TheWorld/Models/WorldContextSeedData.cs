@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,14 +9,27 @@ namespace TheWorld.Models
     public class WorldContextSeedData
     {
         private WorldContext _worldContext;
+        private UserManager<WorldUser> _userManager;
 
-        public WorldContextSeedData(WorldContext worldContext)
+        public WorldContextSeedData(WorldContext worldContext, UserManager<WorldUser> userManager)
         {
             _worldContext = worldContext;
+            _userManager = userManager;
         }
 
-        public void EnsureSeedData()
+        public async Task EnsureSeedDataAsync()
         {
+            if (await _userManager.FindByEmailAsync("kim.jan.andersen82@gmail.com") == null)
+            {
+                var newUser = new WorldUser()
+                {
+                    UserName = "kimandersen",
+                    Email = "kim.jan.andersen82@gmail.com"
+                };
+
+                var user = await _userManager.CreateAsync(newUser, "1234Abcd");
+            }
+
             if (!_worldContext.Trips.Any())
             {
                 // Add new Data
@@ -23,7 +37,7 @@ namespace TheWorld.Models
                 {
                     Name = "Us Trip 1",
                     Created = DateTime.UtcNow,
-                    UserName = "",
+                    UserName = "kimandersen",
                     Stops = new List<Stop>()
                     {
                         new Stop() { Name = "Atlanta, Ga", Arrival = new DateTime(2014, 6, 4), Latitude = 33.748995, Longitude = -84.387982, Order = 0 },
@@ -43,7 +57,7 @@ namespace TheWorld.Models
                 {
                     Name = "Us Trip 1",
                     Created = DateTime.UtcNow,
-                    UserName = "",
+                    UserName = "kimandersen",
                     Stops = new List<Stop>()
                     {
                         new Stop() { Name = "Atlanta, Ga", Arrival = new DateTime(2014, 6, 4), Latitude = 33.748995, Longitude = -84.387982, Order = 0 }, 
@@ -62,7 +76,7 @@ namespace TheWorld.Models
                 {
                     Name = "Us Trip 1",
                     Created = DateTime.UtcNow,
-                    UserName = "",
+                    UserName = "kimandersen",
                     Stops = new List<Stop>()
                     {
                         new Stop() { Name = "Atlanta, Ga", Arrival = new DateTime(2014, 6, 4), Latitude = 33.748995, Longitude = -84.387982, Order = 0 },
