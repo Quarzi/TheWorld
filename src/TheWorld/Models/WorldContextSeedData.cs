@@ -55,7 +55,7 @@ namespace TheWorld.Models
 
                 var usTrip2 = new Trip()
                 {
-                    Name = "Us Trip 1",
+                    Name = "Us Trip 2",
                     Created = DateTime.UtcNow,
                     UserName = "kimandersen",
                     Stops = new List<Stop>()
@@ -74,7 +74,7 @@ namespace TheWorld.Models
 
                 var usTrip3 = new Trip()
                 {
-                    Name = "Us Trip 1",
+                    Name = "Us Trip 3",
                     Created = DateTime.UtcNow,
                     UserName = "kimandersen",
                     Stops = new List<Stop>()
