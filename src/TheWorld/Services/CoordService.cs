@@ -21,7 +21,7 @@ namespace TheWorld.Services
             {
                 Success = true,
                 Message = "Success",
-                Latitude = 100.00000,
+                Latitude = 100.0000,
                 Longitude = 100.0000
             };
         }

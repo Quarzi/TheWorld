@@ -24,7 +24,7 @@ namespace TheWorld.Controllers.Web
             return View();
         }
 
-        [HttpGet]
+        [Authorize, HttpGet]
         public IActionResult Trips()
         {
             return View();
@@ -36,7 +36,7 @@ namespace TheWorld.Controllers.Web
             return View();
         }
 
-        [Authorize, HttpGet]
+        [HttpGet]
         public IActionResult Contact()
         {
             return View();
