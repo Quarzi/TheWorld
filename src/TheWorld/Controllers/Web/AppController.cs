@@ -27,11 +27,7 @@ namespace TheWorld.Controllers.Web
         [HttpGet]
         public IActionResult Trips()
         {
-            var trips = _worldRepository.GetAllTrips();
-
-            
-
-            return View(trips);
+            return View();
         }
 
         [HttpGet]
